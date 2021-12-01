@@ -104,7 +104,15 @@ try:
       while data:
          try:
             data = client.recv(50)
-            print(data)
+
+            int_values = [x for x in data]
+            if int_values[0] == 211:
+               print(int_values)
+            # data = data.decode('ISO-8859-1').split("\r\n")
+            # data = data.decode('ascii')
+            # decoded_data = base64.b64decode(data)
+            # data = data.decode('ISO-8859-1')
+            # print(data[0])
             # self.out.write(data)
             # self.out.buffer.write(data)
             # if self.UDP_socket:

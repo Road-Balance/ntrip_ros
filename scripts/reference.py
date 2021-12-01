@@ -58,7 +58,6 @@ class NtripClient(object):
                  ):
         self.buffer=buffer
         self.user=base64.b64encode(bytes(user,'utf-8')).decode("utf-8")
-#        print(self.user)
         self.out=out
         self.port=port
         self.caster=caster
@@ -160,7 +159,6 @@ class NtripClient(object):
                     self.socket.sendall(self.getMountPointBytes())
                     while not found_header:
                         casterResponse=self.socket.recv(4096) #All the data
-#                        print(casterResponse)
                         header_lines = casterResponse.decode('utf-8').split("\r\n")
 
                         for line in header_lines:
@@ -174,9 +172,6 @@ class NtripClient(object):
                                     sys.stderr.write("Header: " + line+"\n")
                             if self.headerOutput:
                                 self.headerFile.write(line+"\n")
-
-
-
 
                         for line in header_lines:
                             if line.find("SOURCETABLE")>=0:
@@ -205,24 +200,19 @@ class NtripClient(object):
                         try:
                             data=self.socket.recv(self.buffer)
                             self.out.write(data)
-#                            self.out.buffer.write(data)
                             if self.UDP_socket:
                                 self.UDP_socket.sendto(data, ('<broadcast>', self.UDP_Port))
-#                            print (datetime.datetime.now()-connectTime)
-#                            print(self.maxConnectTime)
                             if self.maxConnectTime :
                                 if datetime.datetime.now() > connectTime+EndConnect:
                                     if self.verbose:
                                         sys.stderr.write("Connection Time exceeded\n")
                                     sys.exit(0)
-#                            self.socket.sendall(self.getGGAString())
-
-
 
                         except socket.timeout:
                             if self.verbose:
                                 sys.stderr.write('Connection TimedOut\n')
                             data=False
+
                         except socket.error:
                             if self.verbose:
                                 sys.stderr.write('Connection Error\n')
