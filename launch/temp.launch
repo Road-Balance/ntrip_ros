@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<launch>
+  <node pkg="ntrip_ros" type="socketNtripROS.py" name="ntrip_ros" output="screen">
+ 	 <param name="rtcm_topic" value="/ublox_gps/rtcm" />
+
+ 	 <param name="target_host" type="str" value="fkp.ngii.go.kr" />
+ 	 <param name="target_port" type="int" value="2201" />
+ 	 <param name="mountpoint" type="str" value="VRS_V32" />
+ 	 <param name="useragent" type="str" value="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36" />
+ 	 <param name="user" value="tge1375@naver.com:gnss" />
+ 	 <param name="verbose" type="bool" value="true" />
+  </node>
+</launch>

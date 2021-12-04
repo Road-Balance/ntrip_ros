@@ -1,6 +1,14 @@
 # ntrip_ros
 NTRIP client, imports RTCM streams to ROS topic
 
+* ros noetic supports
+
+
+```
+sudo apt-get install ros-noetic-nmea-msgs
+sudo apt-get install ros-noetic-rtcm-msgs
+```
+
 This was forked from github.com/tilk/ntrip_ros
 
 The CORS correction server that I am using does not have the /n/r characters. So I parsed out individual messages and published each one on the /rtcm ROS topic.
