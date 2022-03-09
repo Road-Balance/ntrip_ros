@@ -188,7 +188,7 @@ class SocketNtrip(object):
                     self.RTCM_ARR.append(ord(self.data))
 
                     new_data = self.client.recv(2)
-                    print(new_data, type(new_data), new_data[0], new_data[1])
+                    # print(new_data, type(new_data), new_data[0], new_data[1])
 
                     self.RTCM_ARR.append(new_data[0])
                     self.RTCM_ARR.append(new_data[1])
